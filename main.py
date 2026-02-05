@@ -1,13 +1,14 @@
 import pygame
-from ui_elements import button
+from ui_elements import button, background
+from assets import images
+from main_menu import MainMenu
 
 pygame.init()
 screen = pygame.display.set_mode((1280, 720))
 clock = pygame.time.Clock()
 running = True
 
-fung = pygame.image.load("Screenshot 2025-07-14 215351.png")
-fungButton = button(fung, 600, 360, 0.5, 0.5, None, True)
+menu = MainMenu(screen)
 
 while running:
     
@@ -16,8 +17,9 @@ while running:
             running = False
 
     screen.fill("purple")
-    fungButton.handle_event()
-    fungButton.draw(screen)
+
+    menu.load_main_menu()
+
     pygame.display.flip()
 
     clock.tick(60)
